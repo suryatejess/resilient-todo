@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 
 const IndividualTask = (props) => {
-  const [status, setStatus] = useState("unfinished");
+  // const [status, setStatus] = useState("unfinished");
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(props.taskName);
   const [tasksList, setTasksList] = [props.tasksList, props.setTasksList];
 
-  const handleClick = () => {
-    if (status == "finished") {
-      setStatus("unfinished");
-    } else {
-      setStatus("finished");
-    }
+  const handleClick = (e) => {
     props.statusHandler(props.taskId);
     console.log(tasksList);
   };
@@ -39,14 +34,18 @@ const IndividualTask = (props) => {
       ) : (
         <>
           {/* displaying name [unstriked, and striked] */}
-          {status === "finished" ? (
+          {props.status === "finished" ? (
             <span>
               <strike>{props.taskName}</strike>
             </span>
           ) : (
             <span>{props.taskName}</span>
           )}
-          <input type="checkbox" onClick={handleClick}></input>
+          <input
+            type="checkbox"
+            onChange={handleClick}
+            checked={props.status === "finished"}
+          ></input>
           <img
             src="./src/assets/pencil.svg"
             alt="pencil logo"

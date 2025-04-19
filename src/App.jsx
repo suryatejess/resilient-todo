@@ -65,6 +65,7 @@ function App() {
         key={task.id}
         taskId={task.id}
         taskName={task.name}
+        status={task.status}
         deleteHandler={deleteHandler}
         editHandler={editHandler}
         tasksList={tasksList}
