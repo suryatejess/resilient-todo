@@ -1,12 +1,12 @@
 import React from "react";
 
-const Menu = () => {
+const Menu = ({ displayMode, setDisplayMode }) => {
   return (
     <div>
       <h1>TodoList</h1>
-      <button>All</button>
-      <button>Done</button>
-      <button>Todo</button>
+      <button onClick={() => setDisplayMode("All")}>All</button>
+      <button onClick={() => setDisplayMode("Done")}>Done</button>
+      <button onClick={() => setDisplayMode("Todo")}>Todo</button>
     </div>
   );
 };

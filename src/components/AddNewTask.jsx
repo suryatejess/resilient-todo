@@ -12,6 +12,7 @@ export default function AddNewTask({ tasksList, setTasksList }) {
     const newTask = {
       id: crypto.randomUUID(),
       name: taskName,
+      status: "unfinished",
     };
 
     setTasksList((prevTasks) => {

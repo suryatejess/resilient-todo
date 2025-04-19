@@ -4,6 +4,7 @@ const IndividualTask = (props) => {
   const [status, setStatus] = useState("unfinished");
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(props.taskName);
+  const [tasksList, setTasksList] = [props.tasksList, props.setTasksList];
 
   const handleClick = () => {
     if (status == "finished") {
@@ -11,6 +12,8 @@ const IndividualTask = (props) => {
     } else {
       setStatus("finished");
     }
+    props.statusHandler(props.taskId);
+    console.log(tasksList);
   };
 
   const handleEdit = () => {
