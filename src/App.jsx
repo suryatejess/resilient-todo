@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddNewTask from "./components/AddNewTask";
 import IndividualTask from "./components/IndividualTask";
 import Menu from "./components/Menu";
@@ -8,8 +8,23 @@ import DeleteMany from "./components/DeleteMany";
 // a map method which will generate an Individual task for each of the specified in the state variable array
 
 function App() {
-  const [tasksList, setTasksList] = useState([]);
+  let browserFetch = localStorage.getItem("myTasks");
+  if (browserFetch) {
+    browserFetch = JSON.parse(browserFetch);
+  }
+  const [tasksList, setTasksList] = useState(browserFetch || []);
   const [displayMode, setDisplayMode] = useState("All");
+
+  useEffect(() => {
+    // convert tasksList into JSON string
+    // set that into local storage
+    // create a new time stamp and then save it too.
+
+    const tasksListJsonString = JSON.stringify(tasksList);
+    localStorage.setItem("myTasks", tasksListJsonString);
+    console.log("hii i rendered");
+    console.log(tasksListJsonString);
+  });
 
   const deleteHandler = (id) => {
     setTasksList((prevState) => {
