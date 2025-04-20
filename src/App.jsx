@@ -8,11 +8,14 @@ import DeleteMany from "./components/DeleteMany";
 // a map method which will generate an Individual task for each of the specified in the state variable array
 
 function App() {
-  let browserFetch = localStorage.getItem("myTasks");
-  if (browserFetch) {
-    browserFetch = JSON.parse(browserFetch);
-  }
-  const [tasksList, setTasksList] = useState(browserFetch || []);
+  // let browserFetch = localStorage.getItem("myTasks");
+  // if (browserFetch) {
+  //   browserFetch = JSON.parse(browserFetch);
+  // }
+
+  const [tasksList, setTasksList] = useState(
+    JSON.parse(localStorage.getItem("myTasks")) || []
+  );
   const [displayMode, setDisplayMode] = useState("All");
 
   useEffect(() => {
