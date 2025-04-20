@@ -101,7 +101,7 @@ function App() {
 
       {tasksToShowUp}
 
-      <DeleteMany />
+      <DeleteMany tasksList={tasksList} setTasksList={setTasksList} />
     </>
   );
 }
